@@ -25,6 +25,7 @@ import authRoutes from './routes/authRoutes.js'; // The new Google auth routes
 // --- INITIAL SETUP ---
 dotenv.config();
 const app = express();
+app.set('trust proxy', 1);
 
 // --- 3. INITIALIZE PASSPORT ---
 // This must be done BEFORE it is used.
