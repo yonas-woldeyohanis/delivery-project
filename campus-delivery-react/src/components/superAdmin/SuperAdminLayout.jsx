@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import API_BASE_URL from '../config'; 
-
+import API_BASE_URL from '../../config.js';
 import './SuperAdminLayout.css';
 
 const SuperAdminLayout = () => {

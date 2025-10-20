@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config.js';
 
 import './RegisterPage.css';
 
@@ -23,7 +24,7 @@ function RegisterPage() {
     const toastId = toast.loading('Creating your account...');
     try {
       const config = { headers: { 'Content-Type': 'application/json' } };
-      await axios.post('/api/users/register', { name, email, password }, config);
+      await axios.post(`${API_BASE_URL}/api/users/register`, { name, email, password }, config);
       toast.success('Registration successful! Please log in.', { id: toastId });
       setTimeout(() => {
         navigate('/login');
