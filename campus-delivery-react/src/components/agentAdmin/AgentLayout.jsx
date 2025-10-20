@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config'; 
 
 import './AgentLayout.css';
 
@@ -29,7 +30,8 @@ const AgentLayout = () => {
     const toastId = toast.loading('Updating password...');
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put('/api/users/profile/change-password', { currentPassword: passwordData.currentPassword, newPassword: passwordData.newPassword }, config);
+      await axios.put(
+  `${API_BASE_URL}/api/users/profile/change-password`, { currentPassword: passwordData.currentPassword, newPassword: passwordData.newPassword }, config);
       toast.success('Password updated successfully!', { id: toastId });
       setTimeout(() => {
         setShowPasswordModal(false);

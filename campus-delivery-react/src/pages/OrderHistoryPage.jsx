@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import API_BASE_URL from '../config'; 
 
 // --- Import our new custom and responsive CSS ---
 import './OrderHistoryPage.css';
@@ -19,7 +20,7 @@ const OrderHistoryPage = () => {
           throw new Error('You must be logged in to view your order history.');
         }
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.get('/api/orders/myorders', config);
+        const { data } = await axios.get(`${API_BASE_URL}/api/orders/myorder`, config);
         setOrders(data);
       } catch (err) {
         setError(err.response?.data?.message || err.message);

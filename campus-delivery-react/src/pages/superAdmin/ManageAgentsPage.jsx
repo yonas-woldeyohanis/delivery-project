@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config';
 
 // --- 1. IMPORT THE SHARED CSS ---
 import './ManageAdminPages.css';
@@ -28,7 +29,7 @@ function ManageAgentsPage() {
   const fetchAgents = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/agents', getApiConfig());
+      const { data } = await axios.get(`${API_BASE_URL}/api/agents`, getApiConfig());
       setAgents(data);
       setError('');
     } catch (err) {
@@ -78,7 +79,7 @@ function ManageAgentsPage() {
     if (!agentToDelete) return;
     const toastId = toast.loading('Deleting agent...');
     try {
-      await axios.delete(`/api/agents/${agentToDelete.id}`, getApiConfig());
+      await axios.delete(`${API_BASE_URL}/api/agents/${agentToDelete.id}`, getApiConfig());
       toast.success(`"${agentToDelete.name}" deleted.`, { id: toastId });
       fetchAgents();
     } catch (err) {

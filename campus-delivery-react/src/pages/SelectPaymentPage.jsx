@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
+import API_BASE_URL from '../config';
 import './SelectPaymentPage.css';
 
 const SelectPaymentPage = ({ cart }) => { // onClearCart is no longer needed
@@ -64,7 +65,7 @@ const SelectPaymentPage = ({ cart }) => { // onClearCart is no longer needed
       };
       localStorage.setItem('pendingOrder', JSON.stringify(pendingOrderData));
 
-      const { data } = await axios.post('/api/payment/initialize-chapa', paymentInitData, config);
+      const { data } = await axios.post(`${API_BASE_URL}/api/payment/initialize-chapa`, paymentInitData, config);
 
       if (data.checkout_url) {
         toast.success('Redirecting to Chapa...', { id: toastId });

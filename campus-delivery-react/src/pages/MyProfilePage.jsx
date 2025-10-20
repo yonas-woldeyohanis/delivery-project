@@ -52,7 +52,8 @@ const MyProfilePage = ({ userInfo, onUpdate }) => {
       const config = {
         headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${userInfo.token}` },
       };
-      const { data } = await axios.put('/api/users/profile', formData, config);
+      const { data } = await axios.put(
+  `${API_BASE_URL}/api/users/profile`, formData, config);
       onUpdate(data);
       setImagePreview(getFullImageUrl(data.profilePicture));
       toast.success('Profile updated successfully!', { id: toastId });
@@ -72,7 +73,8 @@ const MyProfilePage = ({ userInfo, onUpdate }) => {
     const toastId = toast.loading('Updating password...');
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put('/api/users/profile/change-password', { currentPassword: passwordData.currentPassword, newPassword: passwordData.newPassword }, config);
+      await axios.put(
+  `${API_BASE_URL}/api/users/profile/change-password`, { currentPassword: passwordData.currentPassword, newPassword: passwordData.newPassword }, config);
       toast.success('Password updated successfully!', { id: toastId });
       setTimeout(() => {
         setShowPasswordModal(false);

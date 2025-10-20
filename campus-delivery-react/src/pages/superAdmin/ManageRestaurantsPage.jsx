@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-
+import API_BASE_URL from '../config';
 import './ManageAdminPages.css';
 
 function ManageRestaurantsPage() {
@@ -35,7 +35,7 @@ function ManageRestaurantsPage() {
       // --- THIS IS THE FIX ---
       // The API endpoint is simply '/api/restaurants'.
       // This is a public route to get all restaurants, which is fine for the admin to use as well.
-      const { data } = await axios.get('/api/restaurants', getApiConfig());
+      const { data } = await axios.get(`${API_BASE_URL}/api/restaurants`, getApiConfig());
       setRestaurants(data);
     } catch (err) {
       console.error("API Fetch Error:", err);
@@ -96,7 +96,7 @@ function ManageRestaurantsPage() {
     const toastId = toast.loading(`Deleting ${restaurantToDelete.name}...`);
     try {
       // NOTE: Ensure your DELETE route matches this in the backend
-      await axios.delete(`/api/restaurants/${restaurantToDelete.id}`, getApiConfig());
+      await axios.delete(`${API_BASE_URL}/api/restaurants/${restaurantToDelete.id}`, getApiConfig());
       toast.success(`"${restaurantToDelete.name}" deleted successfully.`, { id: toastId });
       fetchRestaurants();
     } catch (err) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../config'; 
 
 // --- Import our new custom CSS ---
 import './SelectAgentPage.css';
@@ -16,7 +17,7 @@ const SelectAgentPage = () => {
     const fetchAgents = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('/api/agents');
+        const { data } = await axios.get(`${API_BASE_URL}/api/agents`);
         setAgents(data);
       } catch (err) {
         setError('Could not fetch available delivery agents.');

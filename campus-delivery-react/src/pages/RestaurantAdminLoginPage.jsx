@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast'; // --- 1. IMPORT TOAST ---
-
+import API_BASE_URL from '../config';
 // --- 2. IMPORT OUR NEW CSS ---
 import './RestaurantAdminLoginPage.css';
 
@@ -19,7 +19,7 @@ function RestaurantAdminLoginPage({ onLogin }) {
 
     try {
       const config = { headers: { 'Content-Type': 'application/json' } };
-      const { data } = await axios.post('/api/users/login', { email, password }, config);
+      const { data } = await axios.post(`${API_BASE_URL}/api/users/login`, { email, password }, config);
 
       // --- 3. ROLE VALIDATION ---
       if (data.role !== 'restaurantAdmin') {

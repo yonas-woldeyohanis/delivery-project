@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import io from 'socket.io-client'; // --- 1. IMPORT SOCKET.IO-CLIENT ---
-
+import API_BASE_URL from '../config'; 
 import './ManageRestaurantPages.css';
+
 
 // --- 2. DEFINE SOCKET URL AND INITIALIZE SOCKET ---
 const SOCKET_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -23,7 +24,7 @@ const RestaurantOrdersPage = () => {
 
   const fetchOrders = useCallback(async () => {
     try {
-      const { data } = await axios.get('/api/orders/myrestaurant', getApiConfig());
+      const { data } = await axios.get(`${API_BASE_URL}/api/orders/myrestaurant`, getApiConfig());
       setOrders(data);
     } catch (err) {
       setError('Failed to fetch orders.');
@@ -74,7 +75,8 @@ const RestaurantOrdersPage = () => {
   const handleStatusChange = async (orderId, newStatus) => {
     const toastId = toast.loading('Updating status...');
     try {
-      await axios.put(`/api/orders/${orderId}/status`, { status: newStatus }, getApiConfig());
+      await axios.put(
+  `${API_BASE_URL}/api/orders/${orderId}/status`, { status: newStatus }, getApiConfig());
       toast.success('Status updated!', { id: toastId });
       setOrders(prevOrders => 
         prevOrders.map(order => 

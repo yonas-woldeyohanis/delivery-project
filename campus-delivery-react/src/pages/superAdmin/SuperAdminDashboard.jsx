@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config';
+
 
 // Import the new dedicated CSS for the admin dashboard
 import './SuperAdminDashboard.css';
@@ -30,7 +32,7 @@ const SuperAdminDashboard = () => {
     try {
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.get('/api/dashboard/stats', config);
+      const { data } = await axios.get(`${API_BASE_URL}/api/dashboard/stats`, config);
       setStats(data);
     } catch (err) {
       setError('Failed to fetch dashboard data.');
@@ -63,7 +65,7 @@ const SuperAdminDashboard = () => {
     try {
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.post('/api/orders/archive', {}, config);
+      const { data } = await axios.post(`${API_BASE_URL}/api/orders/archive`, {}, config);
       
       toast.success(`${data.archivedCount} orders have been archived.`, { id: toastId });
       fetchStats(); // Re-fetch data to update the UI

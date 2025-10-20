@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config';
 
 import './LoginPage.css';
 
@@ -16,7 +17,7 @@ function LoginPage({ onLogin }) {
     setLoading(true);
     try {
       const config = { headers: { 'Content-Type': 'application/json' } };
-      const { data } = await axios.post('/api/users/login', { email, password }, config);
+      const { data } = await axios.post(`${API_BASE_URL}/api/users/login`, { email, password }, config);
       if (data && data.role === 'customer') {
         toast.success(`Welcome back, ${data.name}!`);
         onLogin(data);

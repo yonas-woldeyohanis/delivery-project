@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config'; 
 
 // We are using the correct CSS file we already created
 import './AgentDashboardPage.css';
@@ -26,7 +27,7 @@ const AgentDashboardPage = () => {
     }
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.get('/api/orders/available', config);
+      const { data } = await axios.get(`${API_BASE_URL}/api/orders/available`, config);
       setOrders(data);
       setError(null); 
     } catch (err) {
@@ -63,7 +64,8 @@ const AgentDashboardPage = () => {
     const toastId = toast.loading('Accepting job...');
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put(`/api/orders/${selectedOrder._id}/accept`, {}, config);
+      await axios.put(
+  `${API_BASE_URL}/api/orders/${selectedOrder._id}/accept`, {}, config);
       
       setOrders(prevOrders => prevOrders.filter(o => o._id !== selectedOrder._id));
       toast.success(`Delivery #${selectedOrder.displayId} accepted!`, { id: toastId });

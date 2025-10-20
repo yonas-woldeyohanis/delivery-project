@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config'; 
 
 // We are reusing the same CSS file for a consistent look and feel
 import './AgentDashboardPage.css';
@@ -22,7 +23,7 @@ const MyDeliveriesPage = () => {
     }
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.get('/api/orders/mydeliveries', config);
+     const { data } = await axios.get(`${API_BASE_URL}/api/orders/mydeliveries`, config);
       setDeliveries(data);
       setError(null);
     } catch (err) {
@@ -44,7 +45,8 @@ const MyDeliveriesPage = () => {
       const toastId = toast.loading('Completing delivery...');
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        await axios.put(`/api/orders/${orderId}/complete`, {}, config);
+        await axios.put(
+  `${API_BASE_URL}/api/orders/${orderId}/complete`, {}, config);
         
         // Optimistic UI update: remove the card instantly
         setDeliveries(prev => prev.filter(d => d._id !== orderId));

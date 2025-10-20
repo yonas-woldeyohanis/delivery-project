@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config';
 
 // Import the shared CSS which includes our toggle switch styles
 import './ManageRestaurantPages.css';
@@ -21,7 +22,7 @@ const RestaurantMenuPage = () => {
 
   const fetchMenu = async () => {
     try {
-      const { data } = await axios.get('/api/restaurants/myrestaurant', getApiConfig());
+      const { data } = await axios.get(`${API_BASE_URL}/api/restaurants/myrestaurant`, getApiConfig());
       setMenu(data.menu || []);
       setError('');
     } catch (err) {
@@ -67,7 +68,7 @@ const RestaurantMenuPage = () => {
     if (window.confirm(`Are you sure you want to delete "${itemName}"?`)) {
       const toastId = toast.loading('Deleting item...');
       try {
-        await axios.delete(`/api/restaurants/myrestaurant/menu/${itemId}`, getApiConfig());
+       await axios.delete(`${API_BASE_URL}/api/restaurants/myrestaurant/menu/${itemId}`, getApiConfig());
         toast.success('Item deleted.', { id: toastId });
         fetchMenu();
       } catch (err) {
@@ -84,7 +85,8 @@ const RestaurantMenuPage = () => {
     );
     try {
       const updatedItem = { ...item, isAvailable: !item.isAvailable };
-      await axios.put(`/api/restaurants/myrestaurant/menu/${item._id}`, updatedItem, getApiConfig());
+      await axios.put(
+  `${API_BASE_URL}/api/restaurants/myrestaurant/menu/${item._id}`, updatedItem, getApiConfig());
     } catch(err) {
       toast.error('Failed to update availability. Reverting change.');
       setMenu(prevMenu => 

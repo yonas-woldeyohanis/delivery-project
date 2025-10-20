@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config'; 
 
 import './SuperAdminLayout.css';
 
@@ -29,8 +30,8 @@ const SuperAdminLayout = () => {
     const toastId = toast.loading('Updating password...');
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put(
-        '/api/users/profile/change-password',
+     await axios.put(
+  `${API_BASE_URL}/api/users/profile/change-password`,
         { currentPassword: passwordData.currentPassword, newPassword: passwordData.newPassword },
         config
       );

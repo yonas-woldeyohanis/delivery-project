@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../config'; 
 
 import './HomePage.css';
 
@@ -17,7 +18,7 @@ function HomePage() {
     const fetchRestaurants = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('/api/restaurants');
+        const { data } = await axios.get(`${API_BASE_URL}/api/restaurants`);
         setRestaurants(data);
       } catch (err) {
         setError('Could not fetch restaurants. Please try again later.');
