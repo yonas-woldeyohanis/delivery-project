@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import API_BASE_URL from '../config';
-
+import API_BASE_URL from '../../config';
 
 // Import the new dedicated CSS for the admin dashboard
 import './SuperAdminDashboard.css';

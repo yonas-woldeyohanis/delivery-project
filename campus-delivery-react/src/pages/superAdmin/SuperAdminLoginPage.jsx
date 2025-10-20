@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast'; // --- 1. IMPORT TOAST ---
-import API_BASE_URL from '../config';
-// --- 2. IMPORT THE NEW DEDICATED CSS ---
+import API_BASE_URL from '../../config';
 import './SuperAdminLoginPage.css';
 
 function SuperAdminLoginPage({ onLogin }) {
