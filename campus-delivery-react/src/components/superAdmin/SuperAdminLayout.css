@@ -1,0 +1,209 @@
+/* --- CSS VARIABLES --- */
+:root {
+  --navbar-height: 70px;
+  --primary-bg: #111827;
+  --secondary-bg: #1f2937;
+  --text-primary: #f8fafc;
+  --text-secondary: #9ca3af;
+  --accent-color: #4f46e5;
+  --border-color: #374151;
+  --danger-color: #ef4444;
+}
+
+/* --- BASE LAYOUT --- */
+.super-admin-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+}
+
+.admin-page-content-wrapper {
+  flex-grow: 1;
+  padding: 2rem;
+  padding-top: calc(var(--navbar-height) + 2rem);
+  background-image:
+    radial-gradient(at 47% 33%, hsl(203.00, 70%, 45%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 82% 65%, hsl(340.00, 60%, 45%, 0.1) 0px, transparent 50%);
+}
+
+/* --- NAVBAR STYLES --- */
+.main-navbar {
+  background-color: var(--secondary-bg);
+  height: var(--navbar-height);
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-left-section {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navbar-brand a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.navbar-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-user-welcome {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.navbar-user-welcome strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.nav-action-btn {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.nav-action-btn:hover {
+  background-color: var(--border-color);
+}
+
+.nav-action-btn.logout-btn {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+/* Mobile Navigation Menu */
+.mobile-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  background-color: var(--secondary-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem;
+  transform: translateY(-120%);
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.mobile-nav-menu.open {
+  transform: translateY(0);
+}
+
+.mobile-nav-menu .nav-link {
+  font-size: 1.1rem;
+}
+
+.mobile-nav-divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--border-color);
+  margin: 0.5rem 0;
+}
+
+.mobile-only-btn {
+  width: 100%;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 991px) {
+  .desktop-nav {
+    display: none;
+  }
+  .navbar-user-actions {
+    display: none;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+}
+
+/* --- MODAL & MISC STYLES --- */
+.modal-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+.modal-content { background-color: var(--secondary-bg); padding: 1.5rem; border-radius: 8px; width: 90%; max-width: 450px; color: var(--text-primary); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.modal-content-lg { max-width: 650px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.modal-title { margin: 0; font-size: 1.25rem; }
+.modal-close-btn { background: none; border: none; font-size: 1.75rem; color: var(--text-secondary); cursor: pointer; }
+.modal-body h4 { margin-top: 0; margin-bottom: 1rem; color: var(--text-primary); }
+.modal-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group.full-width { grid-column: 1 / -1; }
+.form-group { margin-bottom: 1rem; }
+.form-input-custom { width: 100%; padding: 0.75rem; background-color: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-size: 1rem; }
+.form-input-custom::placeholder { color: var(--text-secondary); }
+.form-label-custom { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); }
+.modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--border-color); margin-top: 1.5rem; }
+.modal-btn { padding: 0.6rem 1.2rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
+.btn-primary-custom { background-color: var(--accent-color); color: white; }
+.btn-secondary-custom { background-color: var(--border-color); color: white; }
+.btn-danger-custom { background-color: var(--danger-color); color: white; }
+.error-message { color: var(--danger-color); font-weight: 500; }
+.manage-page-container { padding: 1rem; }
+.manage-page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.manage-page-header h1 { font-size: 2rem; color: var(--text-primary); }
+.add-new-btn { background-color: #e11d48; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+.item-list-admin { display: flex; flex-direction: column; gap: 1rem; }
+.item-row-card { background-color: var(--secondary-bg); padding: 1rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.item-cell-admin { display: flex; flex-direction: column; gap: 0.25rem; flex-grow: 1; min-width: 150px; }
+.item-cell-admin .label { font-size: 0.8rem; color: var(--text-secondary); }
+.item-cell-admin .value { color: var(--text-primary); }
+.item-logo img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+.item-actions { flex-grow: 0; }
+.delete-btn { background-color: var(--danger-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }

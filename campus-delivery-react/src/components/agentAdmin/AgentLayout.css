@@ -1,0 +1,107 @@
+/* --- Overall Agent Layout --- */
+.agent-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+/* --- Agent Sidebar --- */
+.agent-sidebar {
+  width: 260px;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(251, 215, 134, 0.2); /* Yellow accent border */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.agent-sidebar-header {
+  text-align: center; margin-bottom: 2.5rem; padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(251, 215, 134, 0.2);
+}
+/* Add this to your AgentLayout.css file */
+
+.agent-change-password-btn, 
+.agent-header-logout-btn {
+  background: none;
+  border: 1px solid #4b5563;
+  color: #9ca3af;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.agent-change-password-btn:hover, 
+.agent-header-logout-btn:hover {
+  background-color: #4b5563;
+  color: #ffffff;
+}
+.agent-sidebar-header .logo-icon { font-size: 2rem; color: #FBD786; margin-bottom: 0.5rem; }
+.agent-sidebar-header h2 { font-size: 1.2rem; color: #e5e7eb; letter-spacing: 1px; }
+
+.agent-nav-list { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
+.agent-nav-item { margin-bottom: 0.5rem; }
+.agent-nav-link {
+  display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem;
+  border-radius: 8px; color: #9ca3af; text-decoration: none;
+  font-weight: 500; transition: all 0.2s ease;
+}
+.agent-nav-link:hover { background-color: rgba(251, 215, 134, 0.1); color: #ffffff; }
+.agent-nav-link.active {
+  background-color: #FBD786; color: #1D2B64; font-weight: 600;
+  box-shadow: 0 4px 15px rgba(251, 215, 134, 0.3);
+}
+.agent-nav-icon { width: 20px; text-align: center; }
+
+/* --- Main Content Area --- */
+.agent-main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; 
+}
+
+/* --- Top Header Bar --- */
+.agent-top-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem; background: rgba(10, 25, 47, 0.85); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(251, 215, 134, 0.2); position: sticky;
+  top: 0; z-index: 1000;
+}
+.agent-header-actions { display: flex; align-items: center; gap: 1.5rem; }
+.agent-header-user { color: #e5e7eb; }
+.agent-header-logout-btn {
+  background: none; border: 1px solid #4b5563; color: #9ca3af;
+  padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s ease;
+}
+.agent-header-logout-btn:hover { background-color: #4b5563; color: #ffffff; }
+
+/* --- Mobile Nav Toggle --- */
+.agent-mobile-nav-toggle {
+  display: none; background: none; border: none; color: #e5e7eb;
+  font-size: 1.5rem; cursor: pointer;
+}
+
+/* --- The Actual Page Content --- */
+.agent-page-content-wrapper {
+  flex-grow: 1;
+  background-color: #111827; /* Dark background for the pages */
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 992px) {
+  .agent-sidebar {
+    position: fixed; height: 100%; z-index: 1010;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  .agent-sidebar.open {
+    transform: translateX(0);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+  }
+  .agent-mobile-nav-toggle { display: block; }
+}

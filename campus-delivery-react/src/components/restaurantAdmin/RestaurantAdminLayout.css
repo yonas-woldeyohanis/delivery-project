@@ -1,0 +1,150 @@
+/* --- Overall Admin Layout --- */
+.ra-layout { /* ra = Restaurant Admin */
+  display: flex;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+/* --- Admin Sidebar --- */
+.ra-sidebar {
+  width: 260px;
+  /* --- YOUR NEW GRADIENT --- */
+  background: linear-gradient(135deg, #0eee85, #b17d1d, #fc6767, #992e87);
+  background-size: 200% 200%;
+  animation: moveGradient 10s ease infinite alternate;
+  border-right: 1px solid #4b5563; /* Darker border for contrast */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.ra-sidebar-header {
+  text-align: center; margin-bottom: 2.5rem; padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.ra-sidebar-header .logo-icon { font-size: 2rem; color: #ffffff; margin-bottom: 0.5rem; }
+.ra-sidebar-header h2 { font-size: 1.2rem; color: #ffffff; letter-spacing: 1px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+
+.ra-nav-list { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
+.ra-nav-item { margin-bottom: 0.5rem; }
+.ra-nav-link {
+  display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem;
+  border-radius: 8px; color: #e0e0e0; text-decoration: none;
+  font-weight: 500; transition: all 0.2s ease;
+}
+.ra-nav-link:hover { background-color: rgba(255, 255, 255, 0.1); color: #ffffff; }
+.ra-nav-link.active {
+  background-color: #ffffff; color: #1f2937;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.ra-nav-icon { width: 20px; text-align: center; }
+
+/* --- Main Content Area --- */
+.ra-main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* --- Top Header Bar --- */
+.ra-top-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem;
+  /* --- YOUR NEW GRADIENT --- */
+  background: linear-gradient(135deg, #20db68, #b17d1d, #388d00);
+  background-size: 200% 200%;
+  animation: moveGradient 10s ease infinite alternate;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  position: sticky; top: 0; z-index: 1000;
+}
+.ra-header-actions { display: flex; align-items: center; gap: 1.5rem; }
+.ra-header-user { color: #ffffff; font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+.ra-change-password-btn, .ra-header-logout-btn {
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s ease;
+}
+.ra-change-password-btn:hover, .ra-header-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Mobile Nav Toggle --- */
+.ra-mobile-nav-toggle {
+  display: none; background: none; border: none; color: #ffffff;
+  font-size: 1.5rem; cursor: pointer;
+}
+
+/* --- The Actual Page Content --- */
+.ra-page-content-wrapper {
+  flex-grow: 1;
+     background: linear-gradient(-45deg, #c910a1, #263755, #35a014);
+
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+.sidebar-backdrop {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); z-index: 1009;
+}
+.sidebar-backdrop.show { display: block; }
+
+@media (max-width: 992px) {
+  .ra-sidebar {
+    position: fixed; height: 100%; z-index: 1010;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  .ra-sidebar.open {
+    transform: translateX(0);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+  }
+  .ra-main-content { margin-left: 0; }
+  .ra-mobile-nav-toggle { display: block; }
+}
+
+/* --- Consistent Modal Styles --- */
+.modal-backdrop { 
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+  background: rgba(0, 0, 0, 0.7); z-index: 1040; 
+}
+.modal-content { 
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+  background: #ffffff; padding: 2rem; border-radius: 15px; 
+  width: 90%; max-width: 500px; z-index: 1050; color: #1f2937; 
+}
+.modal-header { 
+  display: flex; justify-content: space-between; align-items: center; 
+  border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; 
+}
+.modal-title { font-size: 1.5rem; }
+.modal-close-btn { 
+  background: none; border: none; color: #6b7280; 
+  font-size: 1.5rem; cursor: pointer; 
+}
+.modal-body { padding: 1.5rem 0; }
+.modal-footer { 
+  padding-top: 1rem; border-top: 1px solid #e5e7eb; 
+  display: flex; justify-content: flex-end; gap: 1rem; 
+}
+.btn-primary-custom { 
+  background: #2563eb; color: #ffffff; 
+}
+.btn-secondary-custom { 
+  background-color: #e5e7eb; color: #4b5563; 
+}
+.modal-btn { 
+  padding: 0.6rem 1.2rem; border: none; border-radius: 8px; 
+  cursor: pointer; font-weight: bold; 
+}
+.form-input-custom {
+  width: 100%; padding: 0.8rem 1rem; background: #f3f4f6;
+  border: 1px solid #d1d5db; border-radius: 8px; color: #1f2937;
+  font-size: 1rem;
+}
+.form-group { margin-bottom: 1.5rem; }

@@ -1,0 +1,92 @@
+/* --- The main page wrapper with animated background --- */
+.payment-page-wrapper {
+  background: linear-gradient(-45deg, #6a11cb, #2575fc, #ec008c, #fc6767);
+  background-size: 400% 400%;
+  animation: moveGradient 15s ease infinite;
+  padding: 4rem 2rem;
+  min-height: 100vh;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.payment-selection-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.payment-header h1, .payment-header p {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.payment-header h1 { font-size: 2.5rem; font-weight: 700; }
+.payment-header p { font-size: 1.1rem; }
+
+/* --- The responsive grid for payment cards --- */
+.payment-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* --- The interactive payment card --- */
+.payment-option-card {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+  position: relative;
+}
+
+.payment-option-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.payment-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+.icon-cash { color: #28a745; }
+.icon-chapa { color: #8a3bf1; }
+.icon-bank { color: #007bff; }
+
+.payment-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #fff; }
+.payment-description { color: #e0e0e0; flex-grow: 1; margin-bottom: 1.5rem; }
+
+.payment-button {
+  width: 100%; padding: 0.8rem; border: none; border-radius: 8px;
+  font-weight: bold; font-size: 1rem; cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.payment-button:hover { transform: scale(1.05); }
+
+.btn-cash { background: #28a745; color: white; }
+.btn-chapa { background: #8a3bf1; color: white; }
+.btn-disabled { background-color: #475569; color: #94a3b8; }
+
+.soon-badge {
+  position: absolute; top: 15px; right: 15px; background-color: #ffc107;
+  color: #212529; padding: 0.25rem 0.6rem; border-radius: 20px;
+  font-size: 0.8rem; font-weight: bold;
+}
+
+.payment-option-card.disabled {
+  opacity: 0.6; cursor: not-allowed; filter: grayscale(80%);
+}
+.payment-option-card.disabled:hover { transform: none; box-shadow: none; }

@@ -1,0 +1,176 @@
+/* --- Overall Page Container --- */
+.menu-page-wrapper {
+  background: #0f172a; /* A very dark blue, almost black */
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* --- Restaurant Header Section --- */
+.restaurant-header {
+  padding: 6rem 2rem 4rem 2rem;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dark overlay for text readability */
+.restaurant-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(15, 23, 42, 1) 5%, rgba(15, 23, 42, 0.6) 100%);
+}
+
+.restaurant-title, .restaurant-cuisine {
+  position: relative; /* Bring text above the overlay */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.restaurant-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.restaurant-cuisine {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* --- Menu Content Section --- */
+.menu-content {
+  max-width: 900px;
+  margin: -2rem auto 4rem auto; /* Pulls menu up over the header */
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.menu-section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  padding-left: 1rem;
+  border-left: 4px solid #1d976c;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Individual Menu Item Card --- */
+.menu-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.8); /* Glassy dark blue */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.menu-item-card:hover {
+  transform: scale(1.03);
+  border-color: rgba(29, 151, 108, 0.5);
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+}
+
+.item-description {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.item-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.add-to-cart-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #1d976c, #93f9b9);
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(29, 151, 108, 0.4);
+}
+
+/* --- Checkout Button --- */
+.checkout-button-wrapper {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.checkout-btn {
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(37, 117, 252, 0.4);
+}
+
+.checkout-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(37, 117, 252, 0.6);
+}
+
+/* --- Custom Loader and Error Messages --- */
+.loader-container-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.spinner-menu {
+  width: 50px; height: 50px; border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #1d976c; border-radius: 50%; animation: spin 1s linear infinite;
+}
+.alert-menu {
+  text-align: center; padding: 1rem; margin: 4rem auto; border-radius: 10px;
+  background-color: #ff4d4d; color: white; max-width: 800px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

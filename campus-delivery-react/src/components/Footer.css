@@ -1,0 +1,23 @@
+.app-footer {
+  padding: 1.5rem; /* A bit of padding for spacing */
+  text-align: center;
+  color: #9ca3af;  /* A soft gray is more professional for footer text */
+  background-color: #111827; /* A dark color that matches our other components */
+  
+  /* --- THIS IS THE FIX --- */
+  font-size: 0.85rem; /* This makes the text smaller and more subtle */
+  
+  /* By removing 'position: fixed', the footer will now naturally sit at the
+     bottom of the content, which is better for pages that might scroll. */
+}
+
+.footer-link {
+  color: #9ca3af; /* Match the text color */
+  text-decoration: none;
+  font-weight: 600; /* Make the copyright symbol slightly bolder */
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ffffff; /* Make it interactive on hover */
+}

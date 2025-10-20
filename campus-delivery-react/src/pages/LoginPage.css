@@ -1,0 +1,163 @@
+/* --- Overall Page Container --- */
+.login-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+}
+
+/* --- The Glassy Login Card --- */
+.login-card-custom {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(30, 41, 59, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #e2e8f0;
+  overflow: hidden;
+}
+
+.login-header {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.login-body {
+  padding: 2rem;
+}
+
+/* --- Custom Form Styling --- */
+.form-group-login { margin-bottom: 1.5rem; }
+.form-label-login { display: block; margin-bottom: 0.5rem; color: #94a3b8; }
+.form-input-login {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-input-login:focus {
+  outline: none;
+  border-color: #1d976c;
+  box-shadow: 0 0 0 3px rgba(29, 151, 108, 0.3);
+}
+
+/* --- Login Button --- */
+.login-button-custom {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #1d976c, #93f9b9);
+  color: #111;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.login-button-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(29, 151, 108, 0.4);
+}
+.login-button-custom:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* --- Custom Spinner for Button --- */
+.spinner-login {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0,0,0,0.3);
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+/* --- Card Footer --- */
+.login-footer {
+  background-color: rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+.login-footer div:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+.login-footer-link {
+  color: #1d976c;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-footer-link:hover {
+  text-decoration: underline;
+}
+/* src/pages/LoginPage.css */
+
+/* --- ADD THIS AT THE BOTTOM --- */
+
+/* --- Social Login Styles --- */
+.social-login-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #94a3b8;
+  margin: 1.5rem 0;
+}
+.social-login-divider::before,
+.social-login-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #475569;
+}
+.social-login-divider:not(:empty)::before {
+  margin-right: .5em;
+}
+.social-login-divider:not(:empty)::after {
+  margin-left: .5em;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: #334155;
+  border-color: #6b7280;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}

@@ -1,0 +1,101 @@
+/* Add this to src/styles/App.css */
+
+.restaurant-card {
+  /* This makes the change smooth instead of instant */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.restaurant-card:hover {
+  /* This lifts the card up by 5 pixels */
+  transform: translateY(-5px);
+
+  /* This adds a more pronounced shadow to enhance the "lifted" effect */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+/* Add this to your main CSS file (e.g., App.css or index.css) */
+
+/* This targets the main content area of the Restaurant Admin panel */
+.restaurant-admin-main-content {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: white; /* Makes text readable on the dark background */
+}
+
+/* This makes the headers and text pop */
+.restaurant-admin-main-content h2,
+.restaurant-admin-main-content p {
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* This makes the stat cards look good on the new background */
+.restaurant-admin-main-content .card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.restaurant-admin-main-content .card-title,
+.restaurant-admin-main-content .card-text {
+   color: #343a40; /* Reset card text to be dark and readable */
+}
+
+/* The keyframes that create the animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

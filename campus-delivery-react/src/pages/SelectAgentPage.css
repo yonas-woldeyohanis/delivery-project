@@ -1,0 +1,152 @@
+/* --- Overall Page Container --- */
+.select-agent-page {
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0.5rem auto 0 auto;
+}
+
+/* --- "Pickup" Option Card --- */
+.pickup-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pickup-card:hover {
+  transform: translateY(-5px);
+  background: rgba(40, 51, 69, 0.9);
+  border-color: #1d976c;
+}
+
+.pickup-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.pickup-button {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 50px;
+  background-color: #334155;
+  color: #e2e8f0;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.pickup-card:hover .pickup-button {
+  background-color: #1d976c;
+  color: #111;
+}
+
+/* --- Agent Grid --- */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Individual Agent Card --- */
+.agent-card-custom {
+  background: #1e293b;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agent-card-custom:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.agent-img-wrapper {
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.agent-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.agent-card-custom:hover .agent-img {
+  transform: scale(1.1);
+}
+
+.agent-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.agent-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+}
+
+.agent-title {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.agent-select-btn {
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #1d976c, #93f9b9);
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agent-select-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(29, 151, 108, 0.4);
+}
+
+/* --- Custom Loader and Error Messages --- */
+.loader-container-agent { display: flex; justify-content: center; align-items: center; height: 50vh; }
+.spinner-agent { width: 50px; height: 50px; border: 5px solid rgba(255, 255, 255, 0.3); border-top-color: #1d976c; border-radius: 50%; animation: spin 1s linear infinite; }
+.alert-agent { text-align: center; padding: 1rem; margin: 2rem auto; border-radius: 10px; background-color: #ff4d4d; color: white; max-width: 800px; }
+@keyframes spin { to { transform: rotate(360deg); } }

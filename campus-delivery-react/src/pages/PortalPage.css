@@ -1,0 +1,73 @@
+/* src/pages/PortalPage.css */
+
+.portal-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111827; /* Dark background */
+  color: #e5e7eb;
+  text-align: center;
+  padding: 2rem;
+}
+
+.portal-container {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 15px;
+  padding: 3rem;
+  max-width: 500px;
+  width: 100%;
+}
+
+.portal-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.portal-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.portal-link-btn {
+  display: block;
+  padding: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Super Admin Link */
+.portal-link-btn.super-admin {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+.portal-link-btn.super-admin:hover {
+  background-color: #b91c1c;
+  transform: translateY(-2px);
+}
+
+/* Restaurant Admin Link */
+.portal-link-btn.restaurant-admin {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+.portal-link-btn.restaurant-admin:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Agent Link */
+.portal-link-btn.agent {
+  background-color: #FBD786;
+  color: #1D2B64;
+}
+.portal-link-btn.agent:hover {
+  background-color: #facc15;
+  transform: translateY(-2px);
+}

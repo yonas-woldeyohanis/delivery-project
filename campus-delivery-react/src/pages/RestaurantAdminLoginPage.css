@@ -1,0 +1,108 @@
+/* --- Overall Page Container --- */
+.ra-login-page { /* ra = Restaurant Admin */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #080711,#b17d1d, #602e99);
+}
+
+/* --- The Split-Layout Login Card --- */
+.ra-login-card {
+  width: 100%;
+  max-width: 800px;
+  min-height: 500px;
+  display: flex;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* --- Left Side: Branding/Info --- */
+.ra-login-branding {
+  width: 45%;
+  background: linear-gradient(135deg, #080711,#748642, #01311f);
+  color: #ffffff;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.branding-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+.ra-login-branding h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.ra-login-branding p {
+  color: #dbeafe;
+}
+
+/* --- Right Side: Form --- */
+.ra-login-form-wrapper {
+  width: 55%;
+  padding: 3rem 2.5rem;
+  color: #1f2937;
+}
+.ra-login-form-wrapper h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* --- Custom Form Styling --- */
+.form-group-ra { margin-bottom: 1.5rem; }
+.form-label-ra { display: block; margin-bottom: 0.5rem; color: #4b5563; font-weight: 500; }
+.form-input-ra {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #1f2937;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.form-input-ra:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* --- Login Button --- */
+.ra-login-button {
+  width: 100%; padding: 0.9rem; border-radius: 8px; border: none;
+  background: #2563eb; color: #ffffff; font-size: 1.1rem;
+  font-weight: bold; cursor: pointer; transition: all 0.3s ease;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.ra-login-button:hover { background: #1d4ed8; }
+.ra-login-button:disabled { background: #9ca3af; cursor: not-allowed; }
+
+/* --- Footer Link --- */
+.ra-login-footer {
+  text-align: center; margin-top: 2rem; font-size: 0.9rem; color: #6b7280;
+}
+.ra-login-footer-link { color: #2563eb; font-weight: 600; text-decoration: none; }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .ra-login-branding {
+    display: none; /* Hide the branding section on mobile */
+  }
+  .ra-login-form-wrapper {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+  .ra-login-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+}

@@ -1,0 +1,110 @@
+/* --- Overall Page Container --- */
+.super-admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #111827; /* Dark gray-blue */
+  background-image:
+    radial-gradient(at 47% 33%, hsl(203.00, 70%, 45%) 0px, transparent 50%),
+    radial-gradient(at 82% 65%, hsl(340.00, 60%, 45%) 0px, transparent 50%);
+}
+
+/* --- The Admin Login Card --- */
+.admin-login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(17, 24, 39, 0.8); /* Darker, less transparent */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  color: #e5e7eb;
+  overflow: hidden;
+}
+
+.admin-login-header {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(220, 38, 38, 0.5); /* Red accent */
+  background-color: rgba(220, 38, 38, 0.1);
+}
+.header-icon {
+  color: #dc2626; /* Red */
+  margin-right: 0.75rem;
+}
+
+.admin-login-body {
+  padding: 2.5rem 2rem;
+}
+
+/* --- Custom Form Styling --- */
+.form-group-admin { position: relative; margin-bottom: 2rem; }
+.form-input-admin {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem; /* Padding for icon */
+  background: #1f2937;
+  border: 1px solid #4b5563;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.form-input-admin:focus {
+  outline: none;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+}
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+.form-input-admin:focus + .input-icon {
+  color: #dc2626;
+}
+
+/* --- Login Button --- */
+.admin-login-button {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.admin-login-button:hover {
+  background: #b91c1c;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+}
+.admin-login-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* --- Custom Spinner for Button --- */
+.spinner-admin {
+  width: 20px; height: 20px;
+  border: 3px solid rgba(255,255,255,0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

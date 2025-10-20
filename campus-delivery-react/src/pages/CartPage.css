@@ -1,0 +1,62 @@
+/* src/pages/CartPage.css */
+.cart-page {
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+}
+.cart-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-title-cart {
+  font-size: 2.5rem; font-weight: 700;
+  margin-bottom: 3rem; text-align: center;
+}
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+.cart-items-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+}
+.cart-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.cart-item:last-child { border-bottom: none; }
+.item-name-cart { font-weight: 600; font-size: 1.1rem; }
+.item-price-cart { font-weight: 600; }
+.remove-item-btn-cart { background: none; border: none; color: #ef4444; cursor: pointer; font-weight: bold; font-size: 1.2rem; }
+.summary-card-cart {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px; padding: 2rem;
+  position: sticky; top: 120px;
+}
+.summary-total-cart {
+  display: flex; justify-content: space-between;
+  font-size: 1.5rem; font-weight: bold;
+  padding-top: 1rem; margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.checkout-btn-cart {
+  width: 100%; margin-top: 2rem; padding: 1rem;
+  border-radius: 50px; border: none;
+  background: linear-gradient(90deg, #1d976c, #93f9b9);
+  color: #111; font-size: 1.1rem; font-weight: bold;
+  cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; display: block; text-align: center;
+}
+.checkout-btn-cart:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(29, 151, 108, 0.4); }
+.empty-cart-message-cart { text-align: center; color: #94a3b8; font-size: 1.1rem; }
+.empty-cart-message-cart a { color: #1d976c; }
+
+@media (max-width: 992px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .summary-card-cart { position: static; }
+}

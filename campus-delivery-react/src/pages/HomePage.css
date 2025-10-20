@@ -1,0 +1,209 @@
+/* Overall page container */
+.home-page {
+  /* Animated Gradient Background */
+  background: linear-gradient(-45deg, #c910a1, #263755, #35a014);
+  background-size: 400% 400%;
+  
+  
+  animation: moveGradient 15s ease infinite;
+  color: #ffffff;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero Section (Welcome Area) */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem;
+  min-height: 60vh;
+  flex-direction: column;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  max-width: 600px;
+  color: #e0e0e0;
+}
+
+/* Restaurants Listing Section */
+.restaurants-section {
+  padding: 4rem 2rem;
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle overlay */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+/* The Grid for the Cards */
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The New Restaurant Card Style */
+.restaurant-card-custom {
+  background: rgba(0, 0, 0, 0.3); /* Glassy effect */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card-custom:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+.card-img-custom {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body-custom {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title-custom {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-text-custom {
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+}
+
+/* The New Button Style */
+.card-button-custom {
+  margin-top: auto; /* Pushes button to the bottom */
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #1d976c, #93f9b9);
+  color: #111;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-button-custom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(29, 151, 108, 0.4);
+}
+
+/* Custom Loader and Error Message Styles */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.spinner-custom {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(102, 108, 196, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.alert-custom {
+  text-align: center;
+  padding: 1rem;
+  margin: 2rem auto;
+  border-radius: 10px;
+  background-color: #ff4d4d;
+  color: white;
+  max-width: 800px;
+}
+
+/* --- ADD THIS AT THE BOTTOM OF THE FILE --- */
+
+.section-header {
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  max-width: 500px;
+  margin: 2rem auto 0 auto;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3.5rem; /* Left padding for icon */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: #1d976c;
+  box-shadow: 0 0 0 4px rgba(29, 151, 108, 0.3);
+}
+
+.no-results-message {
+  color: #9ca3af;
+  grid-column: 1 / -1; /* Make it span the full grid width */
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 4rem 0;
+}

@@ -1,0 +1,86 @@
+/* --- Overall Page Container --- */
+.agent-login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* To stack card and footer link */
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  /* --- The Animated Gradient Background --- */
+  background: linear-gradient(-45deg, #0D324D, #7F5A83, #1D2B64, #FBD786);
+  background-size: 400% 400%;
+  animation: moveGradient 15s ease infinite;
+  color: #ffffff;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- The Glassy Login Card --- */
+.agent-login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  padding: 2.5rem;
+}
+
+.agent-login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.agent-login-header .icon {
+  font-size: 3rem;
+  color: #FBD786; /* Yellow accent from gradient */
+  margin-bottom: 1rem;
+}
+.agent-login-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* --- Custom Form Styling --- */
+.form-group-agent { margin-bottom: 1.5rem; }
+.form-label-agent { display: block; margin-bottom: 0.5rem; color: #e0e0e0; }
+.form-input-agent {
+  width: 100%; padding: 0.8rem 1rem; background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 8px;
+  color: white; font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.form-input-agent::placeholder { color: #bdbdbd; }
+.form-input-agent:focus {
+  outline: none; border-color: #FBD786;
+  box-shadow: 0 0 0 3px rgba(251, 215, 134, 0.3);
+}
+
+/* --- Login Button --- */
+.agent-login-button {
+  width: 100%; padding: 0.9rem; border-radius: 8px; border: none;
+  background: #FBD786; color: #1D2B64; font-size: 1.1rem;
+  font-weight: bold; cursor: pointer; transition: all 0.3s ease;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.agent-login-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(251, 215, 134, 0.4);
+}
+.agent-login-button:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* --- Footer Link --- */
+.agent-footer-link {
+  margin-top: 1.5rem;
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.agent-footer-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}

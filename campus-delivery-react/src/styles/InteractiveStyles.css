@@ -1,0 +1,45 @@
+/* src/styles/InteractiveStyles.css */
+
+/* --- Main Card Styling --- */
+/* We target the .restaurant-card class you already have in your HomePage.jsx */
+.restaurant-card {
+  border: 1px solid #e0e0e0;
+  /* Add a transition for all properties to make hover effects smooth */
+  transition: all 0.3s ease-in-out;
+  /* This is crucial for the image zoom effect */
+  overflow: hidden; 
+}
+
+/* --- Card Hover Effects --- */
+.restaurant-card:hover {
+  /* Lift the card up slightly */
+  transform: translateY(-8px);
+  /* Add a "glow" shadow effect. You can customize the color. */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #0d6efd; /* Use your app's primary color */
+}
+
+/* --- Card Image Hover Effect --- */
+.restaurant-card .card-img-top {
+  /* Add a transition to the image as well for a smooth zoom */
+  transition: transform 0.4s ease;
+}
+
+/* When you hover over the CARD, the IMAGE inside it will zoom in */
+.restaurant-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* --- Button Polish --- */
+/* Target the primary button inside our interactive cards */
+.restaurant-card .btn-primary {
+  /* Add a transition for a smoother color change and movement */
+  transition: all 0.3s ease;
+}
+
+.restaurant-card .btn-primary:hover {
+  /* Make the button lift slightly for a "pressable" feel */
+  transform: translateY(-2px);
+  /* Add a subtle shadow to the button itself */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

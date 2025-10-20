@@ -1,0 +1,151 @@
+/* --- Main Navbar Container --- */
+.app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; /* This pins the navbar to both edges, fixing the scrollbar issue */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(10, 25, 47, 0.85); /* Dark glassy blue */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* --- DESKTOP Navigation Links --- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link, .nav-link-button {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.nav-link:hover, .nav-link-button:hover {
+  color: #ffffff;
+}
+
+.nav-link::after, .nav-link-button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background: linear-gradient(90deg, #1d976c, #93f9b9);
+  transition: all 0.3s ease-out;
+}
+
+.nav-link:hover::after, .nav-link-button:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Cart with Badge */
+.cart-link { position: relative; }
+.cart-badge {
+  position: absolute; top: -8px; right: -12px;
+  background-color: #e11d48; color: white;
+  width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: bold;
+}
+
+/* User Profile Avatar in Nav */
+.nav-user-avatar img {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.nav-user-avatar img:hover {
+  border-color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* Special Style for Logout Button */
+.logout-button {
+  background: #475569; color: #e2e8f0; border: none;
+  border-radius: 20px; padding: 0.5rem 1rem; font-weight: bold;
+  cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease;
+}
+.logout-button:hover {
+  background-color: #e11d48; color: #ffffff;
+}
+
+/* --- MOBILE & RESPONSIVE STYLES --- */
+.mobile-menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none; border: none; z-index: 1002;
+  cursor: pointer;
+}
+.hamburger-icon {
+  width: 30px; height: 21px; display: flex;
+  flex-direction: column; justify-content: space-between;
+}
+.hamburger-icon span {
+  display: block; height: 3px; width: 100%;
+  background: white; border-radius: 3px;
+}
+
+/* The mobile menu overlay */
+.mobile-nav-links {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #0f172a;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2.5rem; /* Increased gap for better touch targets */
+  opacity: 0; visibility: hidden; z-index: 1001;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.mobile-nav-links.open {
+  opacity: 1; visibility: visible;
+}
+.mobile-nav-links .nav-link { font-size: 1.8rem; } /* Larger font for mobile */
+.mobile-nav-links .logout-button { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
+
+/* This is the media query that makes it all work */
+@media (max-width: 992px) {
+  .nav-links {
+    display: none; /* Hide the desktop links on mobile */
+  }
+  .mobile-menu-toggle {
+    display: block; /* Show the hamburger icon on mobile */
+  }
+}
+
+/* --- Password Change Modal (Styles are unchanged and can be moved later) --- */
+.modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1040; }
+.modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1e293b; padding: 2rem; border-radius: 15px; width: 90%; max-width: 500px; z-index: 1050; color: white; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1rem; }
+.modal-title { font-size: 1.5rem; }
+.modal-close-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+.modal-body { padding: 1.5rem 0; }
+.modal-footer { padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: flex-end; gap: 1rem; }
+.form-group { margin-bottom: 1.5rem; }
+.form-input { width: 100%; padding: 0.75rem 1rem; background: #334155; border: 1px solid #475569; border-radius: 8px; color: white; font-size: 1rem; }
+.form-input::placeholder { color: #94a3b8; }
+.modal-btn { padding: 0.6rem 1.2rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.btn-primary-custom { background: linear-gradient(90deg, #1d976c, #93f9b9); color: #111; }
+.btn-secondary-custom { background-color: #475569; color: white; }

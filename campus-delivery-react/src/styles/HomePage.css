@@ -1,0 +1,32 @@
+/* src/styles/HomePage.css */
+
+/* This sets the dark background for the entire page */
+body {
+  background-color: #121212 !important;
+  color: #ffffff;
+}
+
+/* Make text readable on a dark background */
+h1 {
+  color: #ffffff !important;
+}
+
+/* These are the styles for our cards, including the hover effect */
+.restaurant-card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #444 !important;
+  color: #ffffff !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.restaurant-card .card-title {
+  color: #ffffff !important;
+}
+.restaurant-card .card-text {
+  color: #bbbbbb !important; /* A slightly dimmer white for secondary text */
+}
