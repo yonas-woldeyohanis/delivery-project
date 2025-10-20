@@ -3,7 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 import './MyProfilePage.css';
-import { API_BASE_URL } from '../config';
+import  API_BASE_URL  from '../config';
 
 const MyProfilePage = ({ userInfo, onUpdate }) => {
   // State for profile form
