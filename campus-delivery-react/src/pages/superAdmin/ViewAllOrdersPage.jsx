@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import API_BASE_URL from '../../config';
 import './ManageAdminPages.css';
 
 const ViewAllOrdersPage = () => {
@@ -23,7 +23,7 @@ const ViewAllOrdersPage = () => {
         }
       };
       
-      const { data } = await axios.get('/api/orders', config);
+      const { data } = await axios.get(`${API_BASE_URL}/api/orders`, config);
       setOrders(data);
       setError('');
     } catch (err) {
