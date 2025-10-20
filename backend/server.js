@@ -34,6 +34,11 @@ configurePassport(passport);
 app.use(cors());
 app.use(express.json());
 
+const allowedOrigins = [
+  'https://campusdeliveryweb.netlify.app', // Your deployed Netlify site
+  'http://localhost:5173'                 // Your local development environment
+];
+
 // --- 4. ADD SESSION & PASSPORT MIDDLEWARE TO THE APP ---
 // This must come BEFORE your API routes.
 app.use(session({
@@ -53,8 +58,8 @@ const server = http.createServer(app);
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
-    methods: ["GET", "POST"],
+    origin: allowedOrigins, // Use the same array of allowed origins
+    credentials: true       // It's good practice to include this
   },
 });
 
