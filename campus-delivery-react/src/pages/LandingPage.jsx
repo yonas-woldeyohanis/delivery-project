@@ -4,14 +4,7 @@ import "./LandingPage.css";
 
 // --- Data for our new interactive slider ---
 const featuresData = [
-  {
-    icon: "fas fa-search-location",
-    title: "Real-Time Tracking",
-    description:
-      "Know exactly where your order is from the moment it's prepared to when it arrives at your door.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1606220838315-056192d5d8f3?w=500&auto=format&fit=crop&q=60",
-  },
+
   {
     icon: "fas fa-wallet",
     title: "Secure Online Payments",
@@ -19,6 +12,14 @@ const featuresData = [
       "Pay easily and securely with local payment methods like Telebirr and CBE through our Chapa integration.",
     imageUrl:
       "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=500&auto=format&fit=crop&q=60",
+  },
+    {
+    icon: "fas fa-search-location",
+    title: "Real-Time Tracking",
+    description:
+      "Know exactly where your order is from the moment it's prepared to when it arrives at your door.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1606220838315-056192d5d8f3?w=500&auto=format&fit=crop&q=60",
   },
   {
     icon: "fas fa-users",
@@ -86,6 +87,14 @@ const LandingPage = () => {
           <div className="hero-bg-image image1"></div>
           <div className="hero-bg-image image2"></div>
           <div className="hero-bg-image image3"></div>
+          <div className="hero-bg-image image4"></div>
+          <div className="hero-bg-image image5"></div>
+          <div className="hero-bg-image image6"></div>
+          <div className="hero-bg-image image7"></div>
+          <div className="hero-bg-image image8"></div>
+          <div className="hero-bg-image image9"></div>
+          <div className="hero-bg-image image10"></div>
+
         </div>
 
         <div className="landing-content">

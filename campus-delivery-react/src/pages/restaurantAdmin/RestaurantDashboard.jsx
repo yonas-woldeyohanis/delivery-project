@@ -21,8 +21,8 @@ const RestaurantDashboard = () => {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
         const [restaurantResponse, ordersResponse] = await Promise.all([
-          axios.get(`${API_BASE_URL}//api/restaurants/myrestaurant`, config),
-          axios.get(`${API_BASE_URL}//api/orders/myrestaurant`, config)
+            axios.get(`${API_BASE_URL}/api/restaurants/myrestaurant`, config),
+              axios.get(`${API_BASE_URL}/api/orders/myrestaurant`, config)
         ]);
         
         setRestaurant(restaurantResponse.data);

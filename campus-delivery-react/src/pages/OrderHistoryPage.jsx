@@ -20,7 +20,7 @@ const OrderHistoryPage = () => {
           throw new Error('You must be logged in to view your order history.');
         }
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.get(`${API_BASE_URL}/api/orders/myorder`, config);
+        const { data } = await axios.get(`${API_BASE_URL}/api/orders/myorders`, config);
         setOrders(data);
       } catch (err) {
         setError(err.response?.data?.message || err.message);
