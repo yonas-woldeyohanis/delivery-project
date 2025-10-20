@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import API_BASE_URL from '../config'; 
-
+import API_BASE_URL from '../../config';
 // We are using the correct CSS file we already created
 import './AgentDashboardPage.css';
 

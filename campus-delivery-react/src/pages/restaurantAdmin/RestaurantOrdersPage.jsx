@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import io from 'socket.io-client'; // --- 1. IMPORT SOCKET.IO-CLIENT ---
-import API_BASE_URL from '../config'; 
+import API_BASE_URL from '../../config';
 import './ManageRestaurantPages.css';
 
 
