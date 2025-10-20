@@ -5,7 +5,7 @@
 .env
 
 # User-generated content (like image uploads)
-/uploads
+
 
 # Logs
 npm-debug.log*

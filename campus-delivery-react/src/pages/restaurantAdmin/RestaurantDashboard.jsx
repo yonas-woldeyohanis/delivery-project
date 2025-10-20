@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../../config';
 
 // --- 1. IMPORT THE NEW DEDICATED CSS ---
 import './RestaurantDashboard.css';
@@ -20,8 +21,8 @@ const RestaurantDashboard = () => {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
         const [restaurantResponse, ordersResponse] = await Promise.all([
-          axios.get('/api/restaurants/myrestaurant', config),
-          axios.get('/api/orders/myrestaurant', config)
+          axios.get(`${API_BASE_URL}//api/restaurants/myrestaurant`, config),
+          axios.get(`${API_BASE_URL}//api/orders/myrestaurant`, config)
         ]);
         
         setRestaurant(restaurantResponse.data);
