@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import API_BASE_URL from '../../../config';
+import API_BASE_URL from '../../config';
 import './AgentLayout.css';
 
 const AgentLayout = () => {
