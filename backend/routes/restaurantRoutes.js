@@ -178,22 +178,13 @@ router.get('/', async (req, res) => {
 
 // GET /api/restaurants/:id - Fetch a single restaurant for customers
 // This route MUST be last to avoid path conflicts.
-router.get('/:id', async (req, res) => {
+router.get('/:id/public', async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);
     if (restaurant) {
-      // We also apply the same logic here for consistency
-      const baseUrl = `${req.protocol}://${req.get('host')}`;
-      const restaurantObject = restaurant.toObject();
-      
-      if (restaurantObject.logo && restaurantObject.logo.startsWith('/uploads')) {
-        restaurantObject.logo = `${baseUrl}${restaurantObject.logo}`;
-      }
-      
-      // Filter the menu for available items before sending
-      restaurantObject.menu = restaurantObject.menu.filter(item => item.isAvailable);
-
-      res.json(restaurantObject);
+      // Your logic to filter the menu and send the response
+      // ...
+      res.json(restaurant);
     } else {
       res.status(404).json({ message: 'Restaurant not found' });
     }

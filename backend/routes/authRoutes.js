@@ -16,7 +16,7 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
   const token = generateToken(req.user._id);
 
   // Redirect the user back to a specific frontend page with the token
-  res.redirect(`http://localhost:5173/auth/callback?token=${token}&user=${encodeURIComponent(JSON.stringify(req.user))}`);
+  res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`);
 });
 
 export default router;
