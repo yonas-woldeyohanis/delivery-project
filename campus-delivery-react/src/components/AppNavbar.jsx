@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import './AppNavbar.css'; 
-import { API_BASE_URL } from '../config';
+import API_BASE_URL from '../../config';
 
 function AppNavbar({ cartCount, userInfo, onLogout }) {
   const navigate = useNavigate();
