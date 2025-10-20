@@ -54,7 +54,7 @@ function LoginPage({ onLogin }) {
 
           {/* --- THIS IS THE NEW PART --- */}
           <div className="social-login-divider">OR</div>
-          <a href="http://localhost:5000/api/auth/google" className="google-btn">
+          <a href={`${API_BASE_URL}/api/auth/google`} className="google-btn">
             {/* Make sure you have a google-icon.svg in your /public folder */}
             <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google icon" /> 
             Continue with Google
