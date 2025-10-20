@@ -35,7 +35,7 @@ app.use(cors());
 app.use(express.json());
 
 const allowedOrigins = [
-  'https://campusdeliveryweb.netlify.app', // Your deployed Netlify site
+  'https://aberus-service.netlify.app/', // Your deployed Netlify site
   'http://localhost:5173'                 // Your local development environment
 ];
 
