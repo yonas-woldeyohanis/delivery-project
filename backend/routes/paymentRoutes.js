@@ -19,7 +19,6 @@ router.post('/initialize-chapa', protect, async (req, res) => {
       }
     }
 
-    // This is the data Chapa's API expects
     const chapaData = {
       amount,
       currency,
@@ -27,11 +26,11 @@ router.post('/initialize-chapa', protect, async (req, res) => {
       first_name,
       last_name,
       tx_ref,
-      // IMPORTANT: These URLs are where Chapa will redirect the user after payment
-      // We will build the /payment-verify page in a later step
-      return_url: `http://localhost:5173/payment-verify`, 
-      // You can also set up a webhook for server-to-server confirmation
-      // callback_url: 'https://your_backend_url/api/payment/chapa-webhook',
+      // --- THIS IS THE FIX ---
+      // This line now uses your environment variable.
+      // In production, it will be 'https://campusdeliveryweb.netlify.app/payment-verify'.
+      // On your local machine, it will use the fallback you set in your .env file.
+      return_url: `${process.env.FRONTEND_URL}/payment-verify`, 
     };
 
     const config = {
@@ -64,7 +63,7 @@ router.post('/initialize-chapa', protect, async (req, res) => {
 // @desc    Verify a Chapa transaction
 // @route   GET /api/payment/verify-chapa/:tx_ref
 // @access  Private
-
+// This route does not need changes as it's a server-to-server call.
 router.get('/verify-chapa/:tx_ref', protect, async (req, res) => {
   try {
     const { tx_ref } = req.params;

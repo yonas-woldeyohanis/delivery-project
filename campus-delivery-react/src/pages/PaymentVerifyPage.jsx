@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import API_BASE_URL from '../config';
 
 // Simple loading UI
 const LoadingSpinner = () => (
@@ -30,7 +31,7 @@ function PaymentVerifyPage({ onClearCart }) {
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
         // 2. Ask our backend to verify the transaction with Chapa
-        const { data: verificationResult } = await axios.get(`/api/payment/verify-chapa/${pendingOrder.tx_ref}`, config);
+        const { data: verificationResult } = await axios.get(`${API_BASE_URL}/api/payment/verify-chapa/${pendingOrder.tx_ref}`, config);
         
         if (verificationResult.status !== 'success') {
           throw new Error('Payment verification failed. Please contact support.');
@@ -56,7 +57,7 @@ function PaymentVerifyPage({ onClearCart }) {
           paidAt: new Date(),
         };
 
-        const { data: createdOrder } = await axios.post('/api/orders', orderData, config);
+        const { data: createdOrder } = await axios.post(`${API_BASE_URL}/api/orders`, orderData, config);
 
         // 4. Cleanup and Redirect
         localStorage.removeItem('pendingOrder');
