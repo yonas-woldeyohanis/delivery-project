@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import io from 'socket.io-client';
 import toast from 'react-hot-toast'; // --- 1. IMPORT TOAST ---
+import API_BASE_URL from '../config'; 
 
 // --- 2. IMPORT OUR NEW CSS ---
 import './OrderDetailPage.css';
@@ -38,7 +39,7 @@ const OrderDetailPage = () => {
       try {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.get(`/api/orders/${orderId}`, config);
+       const { data } = await axios.get(`${API_BASE_URL}/api/orders/${orderId}`, config);
         setOrder(data);
       } catch (err) {
         setError(err.response?.data?.message || err.message);
