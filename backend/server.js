@@ -46,7 +46,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 const allowedOrigins = [
-  'https://aberus-service.netlify.app/', // Your deployed Netlify site
+  'https://aberus-service.netlify.app', // Your deployed Netlify site
   'http://localhost:5173'                 // Your local development environment
 ];
 
