@@ -12,7 +12,7 @@ const Footer = () => {
       <p>
         {/* The "secret" link is on the copyright symbol */}
         <Link to="/portal" className="footer-link" >©</Link> 
-        {` ${currentYear} Campus Delivery. All Rights `}   <Link to="/" className="footer-link" >Reserved.</Link> 
+        {` ${currentYear} Aberus Service. All Rights `}   <Link to="/" className="footer-link" >Reserved.</Link> 
       </p>
     </footer>
   );

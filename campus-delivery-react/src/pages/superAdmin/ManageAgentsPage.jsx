@@ -102,8 +102,7 @@ function ManageAgentsPage() {
         {loading ? <p>Loading...</p> : error ? <p>{error}</p> : (
           <div className="item-list-admin">
             {agents.map(agent => (
-              <div key={agent._id} className="item-row-card" style={{gridTemplateColumns: '80px 2fr 2fr 2fr 1fr'}}>
-                <div className="item-cell-admin item-logo">
+<div key={agent._id} className="item-row-card">                <div className="item-cell-admin item-logo">
                   <img src={agent.profilePicture} alt={agent.name} style={{borderRadius: '50%'}}/>
                 </div>
                 <div className="item-cell-admin">

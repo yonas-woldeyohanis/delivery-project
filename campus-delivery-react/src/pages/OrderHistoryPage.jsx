@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import API_BASE_URL from '../config'; 
 
-// --- Import our new custom and responsive CSS ---
 import './OrderHistoryPage.css';
 
 const OrderHistoryPage = () => {
@@ -11,7 +10,6 @@ const OrderHistoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // This data-fetching logic is perfect and remains unchanged.
   useEffect(() => {
     const fetchMyOrders = async () => {
       try {
@@ -21,7 +19,12 @@ const OrderHistoryPage = () => {
         }
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
         const { data } = await axios.get(`${API_BASE_URL}/api/orders/myorders`, config);
-        setOrders(data);
+
+        // --- CHANGE #1: Sort the orders in descending order (newest first) ---
+        const sortedOrders = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        
+        setOrders(sortedOrders); // Set the sorted array to state
+
       } catch (err) {
         setError(err.response?.data?.message || err.message);
       } finally {
@@ -31,7 +34,6 @@ const OrderHistoryPage = () => {
     fetchMyOrders();
   }, []);
 
-  // Helper function to get the correct CSS class for status badges
   const getStatusClass = (status) => {
     switch (status) {
       case 'Pending': return 'pending';
@@ -73,22 +75,19 @@ const OrderHistoryPage = () => {
           <div className="orders-list">
             {orders.map((order) => (
               <div key={order._id} className="order-card-custom">
-                {/* Order ID */}
                 <div className="order-info order-id">
                   <div className="info-label">ORDER ID</div>
                   <div className="info-value order-id">{order.displayId || order._id.slice(-8).toUpperCase()}</div>
                 </div>
-                {/* Date */}
                 <div className="order-info order-date">
                   <div className="info-label">DATE</div>
-                  <div className="info-value">{new Date(order.createdAt).toLocaleDateString()}</div>
+                  {/* --- CHANGE #2: Display both date and time --- */}
+                  <div className="info-value">{new Date(order.createdAt).toLocaleString()}</div>
                 </div>
-                {/* Total */}
                 <div className="order-info order-total">
                   <div className="info-label">TOTAL</div>
                   <div className="info-value">Birr {order.totalPrice.toFixed(2)}</div>
                 </div>
-                {/* Status */}
                 <div className="order-info order-status">
                   <div className="info-label">STATUS</div>
                   <div className="info-value">
@@ -97,7 +96,6 @@ const OrderHistoryPage = () => {
                     </span>
                   </div>
                 </div>
-                {/* Details Button */}
                 <Link to={`/order/${order._id}`} className="details-btn">
                   View Details
                 </Link>

@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
+  z-index: 1010;
   background: rgba(10, 25, 47, 0.85); /* Dark glassy blue */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -99,25 +99,56 @@
   background: none; border: none; z-index: 1002;
   cursor: pointer;
 }
-.hamburger-icon {
-  width: 30px; height: 21px; display: flex;
-  flex-direction: column; justify-content: space-between;
-}
-.hamburger-icon span {
-  display: block; height: 3px; width: 100%;
-  background: white; border-radius: 3px;
+/* --- NEW Styles for Toggling Font Awesome Icons --- */
+
+/* Style both icons */
+.mobile-menu-toggle i {
+  font-size: 1.6rem;
+  color: #ffffff;
+  transition: transform 0.3s ease; /* Optional: adds a nice little effect */
 }
 
-/* The mobile menu overlay */
+/* By default, the close icon is hidden */
+.mobile-menu-toggle .icon-close {
+  display: none;
+}
+
+/* When the button has the .open class... */
+
+/* ...hide the hamburger icon */
+.mobile-menu-toggle.open .icon-hamburger {
+  display: none;
+}
+
+/* ...and show the close icon */
+.mobile-menu-toggle.open .icon-close {
+  display: block;
+} 
+
+/* --- NEW Slide-In Mobile Menu Panel --- */
 .mobile-nav-links {
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%;
+  position: fixed;
+  top: 70px; /* Start below the navbar (adjust if your navbar height is different) */
+  right: -100%; /* Start off-screen to the right */
+  width: 70%;
+  max-width: 400px;
+  height: calc(100% - 70px); /* Fill the rest of the screen height */
   background: #0f172a;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 2.5rem; /* Increased gap for better touch targets */
-  opacity: 0; visibility: hidden; z-index: 1001;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.2);
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  
+  z-index: 1005; /* IMPORTANT: Lower than the main navbar */
+  transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* When the menu is open, slide it into view */
+.mobile-nav-links.open {
+  right: 0;
 }
 .mobile-nav-links.open {
   opacity: 1; visibility: visible;
@@ -149,3 +180,65 @@
 .modal-btn { padding: 0.6rem 1.2rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
 .btn-primary-custom { background: linear-gradient(90deg, #1d976c, #93f9b9); color: #111; }
 .btn-secondary-custom { background-color: #475569; color: white; }
+/* --- HAMBURGER TO "X" TRANSFORMATION --- */
+
+/* Add a smooth transition to the bars when the menu is toggled */
+.hamburger-icon span {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* 
+ * This is where the magic happens. When the button has the .open class,
+ * we target the individual spans inside the hamburger icon.
+ */
+
+/* 1. Hide the middle bar */
+.mobile-menu-toggle.open .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+/* 2. Rotate the top bar down 45 degrees */
+.mobile-menu-toggle.open .hamburger-icon span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+/* 3. Rotate the bottom bar up 45 degrees */
+.mobile-menu-toggle.open .hamburger-icon span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* --- HAMBURGER TO "X" TRANSFORMATION --- */
+
+.hamburger-icon span, .close-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.close-icon {
+  width: 30px;
+  height: 21px;
+  position: relative;
+}
+
+.close-icon span:nth-child(1) {
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.close-icon span:nth-child(2) {
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+
+.app-navbar.menu-is-open {
+  border-bottom-color: transparent;
+}

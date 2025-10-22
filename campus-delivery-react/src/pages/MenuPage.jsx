@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import API_BASE_URL from '../config'; 
+import toast from 'react-hot-toast'; // NEW: Import toast
 
 import './MenuPage.css'; 
 
@@ -22,17 +23,16 @@ const LoadingSpinner = () => (
     </div>
 );
 
-const MenuPage = ({ handleAddToCart }) => { // Assuming you pass handleAddToCart as a prop
+const MenuPage = ({ handleAddToCart }) => {
   const [restaurant, setRestaurant] = useState(null); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [addedItemId, setAddedItemId] = useState(null); // NEW: State to track the recently added item
   
-  // --- FIX #1: Use 'id' to match the route parameter in App.jsx ---
   const { id } = useParams(); 
 
   useEffect(() => {
     const fetchRestaurantMenu = async () => {
-      // The check from my previous code was correct, it just needs to use 'id'
       if (!id) {
         setError("No restaurant ID provided.");
         setLoading(false);
@@ -40,7 +40,6 @@ const MenuPage = ({ handleAddToCart }) => { // Assuming you pass handleAddToCart
       }
       
       try {
-        // --- FIX #2: Use 'id' in the API call URL ---
         const { data } = await axios.get(`${API_BASE_URL}/api/restaurants/${id}/public`);
         setRestaurant(data);
       } catch (err) {
@@ -51,16 +50,24 @@ const MenuPage = ({ handleAddToCart }) => { // Assuming you pass handleAddToCart
     };
 
     fetchRestaurantMenu();
-  // --- FIX #3: The dependency array must also use 'id' ---
   }, [id]); 
+  
+  // UPDATED: New handler to provide UI feedback
+  const onAddItem = (item) => {
+    // 1. Call the original cart logic
+    handleAddToCart({ ...item, restaurantId: id });
+    
+    // 2. Show a success toast
+    toast.success(`"${item.name}" added to cart!`);
 
-  // Dummy function if not provided - replace with your cart logic
-  const onAddToCart = (item) => {
-    console.log("Added to cart:", item);
-    alert(`${item.name} added to cart!`);
+    // 3. Trigger the button's visual change
+    setAddedItemId(item._id);
+
+    // 4. Revert the button back to normal after 1.5 seconds
+    setTimeout(() => {
+      setAddedItemId(null);
+    }, 1500);
   };
-  const addToCartHandler = handleAddToCart || onAddToCart;
-
 
   if (loading) {
     return <LoadingSpinner />;
@@ -97,14 +104,13 @@ const MenuPage = ({ handleAddToCart }) => { // Assuming you pass handleAddToCart
                 </div>
                 <div className="item-actions">
                   <span className="item-price">Birr {item.price.toFixed(2)}</span>
+                  {/* UPDATED: The button now uses the new state and handler */}
                   <button
-                    className="add-to-cart-btn"
-                    onClick={() => addToCartHandler({ 
-                      ...item,
-                      restaurantId: id // Pass the correct 'id'
-                    })}
+                    className={`add-to-cart-btn ${addedItemId === item._id ? 'added' : ''}`}
+                    onClick={() => onAddItem(item)}
+                    disabled={addedItemId === item._id} // Prevent spam clicking
                   >
-                    Add
+                    {addedItemId === item._id ? 'Added ✓' : 'Add'}
                   </button>
                 </div>
               </div>
@@ -118,12 +124,10 @@ const MenuPage = ({ handleAddToCart }) => { // Assuming you pass handleAddToCart
         
         {restaurant.menu && restaurant.menu.length > 0 && (
           <div className="checkout-button-wrapper">
-  {/* The link now goes to the correct page */}
-  <Link to="/select-agent" className="checkout-btn">
-    {/* The text is now updated */}
-    Select Delivery Agent
-  </Link>
-</div>
+            <Link to="/select-agent" className="checkout-btn">
+              Select Delivery Agent
+            </Link>
+          </div>
         )}
       </main>
     </div>

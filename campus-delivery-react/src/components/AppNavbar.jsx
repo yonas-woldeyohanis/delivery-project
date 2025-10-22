@@ -28,9 +28,9 @@ function AppNavbar({ cartCount, userInfo, onLogout }) {
 
   return (
     <>
-      <nav className="app-navbar">
+      <nav className={`app-navbar ${isMobileMenuOpen ? 'menu-is-open' : ''}`}>
         <Link to={userInfo ? "/home" : "/"} className="navbar-brand" onClick={handleMobileLinkClick}>
-          Campus Delivery
+          Aberus Service
         </Link>
         
         {/* --- DESKTOP NAVIGATION LINKS --- */}
@@ -59,14 +59,15 @@ function AppNavbar({ cartCount, userInfo, onLogout }) {
           )}
         </div>
 
-        {/* --- HAMBURGER ICON FOR MOBILE --- */}
-        <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
-          <div className="hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </button>
+  {/* --- HAMBURGER/CLOSE ICON FOR MOBILE (using CSS toggle) --- */}
+<button 
+  className={`mobile-menu-toggle ${isMobileMenuOpen ? 'open' : ''}`} 
+  onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+  aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+>
+  <i className="fas fa-bars icon-hamburger"></i>
+  <i className="fas fa-xmark icon-close"></i>
+</button>
       </nav>
 
       {/* --- MOBILE MENU OVERLAY --- */}

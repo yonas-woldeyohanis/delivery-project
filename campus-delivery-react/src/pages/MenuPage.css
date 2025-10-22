@@ -174,3 +174,16 @@
   background-color: #ff4d4d; color: white; max-width: 800px;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- Styles for the interactive Add to Cart button --- */
+
+.add-to-cart-btn {
+  /* Add a transition for a smooth color change */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-to-cart-btn.added {
+  background-color: #22c55e; /* A successful green color */
+  color: #ffffff;
+  cursor: not-allowed; /* Show that it can't be clicked again immediately */
+}
