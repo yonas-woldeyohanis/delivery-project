@@ -32,7 +32,17 @@ app.set('trust proxy', 1);
 configurePassport(passport);
 
 // --- MIDDLEWARE ---
-app.use(cors());
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // This is crucial for sessions/cookies
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const allowedOrigins = [
@@ -43,9 +53,16 @@ const allowedOrigins = [
 // --- 4. ADD SESSION & PASSPORT MIDDLEWARE TO THE APP ---
 // This must come BEFORE your API routes.
 app.use(session({
+  name: 'campusdelivery.session',
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true,
+  proxy: true, 
+  cookie: { 
+    secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+    httpOnly: true, 
+    sameSite: 'lax' // 'lax' is often necessary for OAuth redirects
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
