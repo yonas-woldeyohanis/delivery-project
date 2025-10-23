@@ -187,3 +187,67 @@
   color: #ffffff;
   cursor: not-allowed; /* Show that it can't be clicked again immediately */
 }
+/* --- NEW: Styles for Restaurant Header Rating --- */
+.restaurant-header-rating {
+  position: relative;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+.restaurant-header-rating .rating-text {
+  color: #e2e8f0; /* Lighter text to match the page */
+}
+
+/* --- NEW: Styles for the Reviews Section --- */
+.reviews-section {
+  margin-top: 4rem; /* Space between the menu and reviews */
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-card {
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  gap: 1rem;
+}
+
+.review-header strong {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.review-comment {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-align: right;
+}
+
+.empty-reviews-message p {
+  background-color: rgba(30, 41, 59, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #94a3b8;
+}

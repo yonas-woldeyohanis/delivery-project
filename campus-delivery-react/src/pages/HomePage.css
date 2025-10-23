@@ -207,3 +207,19 @@
   font-size: 1.2rem;
   padding: 4rem 0;
 }
+/* --- NEW: Styles for the Rating Component in the Card --- */
+
+.card-rating {
+  margin-bottom: 1.5rem; /* Same margin as the cuisine text above it */
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem; /* Adjust star size if needed */
+}
+
+.rating-text {
+  color: #cccccc;
+  margin-left: 0.5rem; /* Space between the stars and the text */
+}

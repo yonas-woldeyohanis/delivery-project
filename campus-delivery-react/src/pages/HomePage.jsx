@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import API_BASE_URL from '../config'; 
+import Rating from '../components/Rating'; // NEW: Import the Rating component
 
 import './HomePage.css';
 
@@ -9,11 +10,8 @@ function HomePage() {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
-  // --- 1. ADD NEW STATE FOR THE SEARCH TERM ---
   const [searchTerm, setSearchTerm] = useState('');
 
-  // This data-fetching logic remains the same.
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
@@ -29,8 +27,6 @@ function HomePage() {
     fetchRestaurants();
   }, []);
 
-  // --- 2. CREATE A FILTERED LIST OF RESTAURANTS ---
-  // This logic runs every time the component re-renders (e.g., when searchTerm changes).
   const filteredRestaurants = restaurants.filter(restaurant =>
     restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     restaurant.cuisine.toLowerCase().includes(searchTerm.toLowerCase())
@@ -58,7 +54,6 @@ function HomePage() {
       <section className="restaurants-section">
         <div className="section-header">
           <h2 className="section-title">Nearby Restaurants</h2>
-          {/* --- 3. ADD THE SEARCH BAR INPUT --- */}
           <div className="search-bar-wrapper">
             <i className="fas fa-search search-icon"></i>
             <input
@@ -76,8 +71,6 @@ function HomePage() {
         ) : error ? (
           <ErrorMessage message={error} />
         ) : (
-          // --- 4. RENDER THE FILTERED LIST ---
-          // Also, add a message for when the filter returns no results.
           <div className="restaurant-grid">
             {filteredRestaurants.length > 0 ? (
               filteredRestaurants.map(restaurant => (
@@ -86,6 +79,15 @@ function HomePage() {
                   <div className="card-body-custom">
                     <h3 className="card-title-custom">{restaurant.name}</h3>
                     <p className="card-text-custom">{restaurant.cuisine}</p>
+                    
+                    {/* UPDATED: Add the Rating component here */}
+                    <div className="card-rating">
+                      <Rating 
+                        value={restaurant.rating} 
+                        text={`${restaurant.numReviews} review${restaurant.numReviews !== 1 ? 's' : ''}`} 
+                      />
+                    </div>
+                    
                     <Link to={`/restaurant/${restaurant._id}`} className="card-button-custom">
                       View Menu
                     </Link>

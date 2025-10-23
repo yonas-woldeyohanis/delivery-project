@@ -1,7 +1,7 @@
 // backend/routes/restaurantRoutes.js
 import express from 'express';
 const router = express.Router();
-
+import { createRestaurantReview } from '../controllers/restaurantController.js';
 import Restaurant from '../models/restaurantModel.js';
 import User from '../models/userModel.js';
 import { protect, isRestaurantAdmin, isSuperAdmin } from '../middleware/authMiddleware.js';
@@ -192,5 +192,6 @@ router.get('/:id/public', async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 });
+router.route('/:id/reviews').post(protect, createRestaurantReview);
 
 export default router;

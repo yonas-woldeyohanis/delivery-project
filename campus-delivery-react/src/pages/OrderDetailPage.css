@@ -156,3 +156,37 @@
 .spinner-detail { width: 50px; height: 50px; border: 5px solid rgba(255, 255, 255, 0.3); border-top-color: #1d976c; border-radius: 50%; animation: spin 1s linear infinite; }
 .message-detail { text-align: center; color: #94a3b8; font-size: 1.1rem; }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- Style for the Leave a Review button --- */
+.review-btn {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #1d976c, #93f9b9);
+  color: #111;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.review-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 15px rgba(147, 249, 185, 0.3);
+}
+/* --- Fix for Order Summary Layout --- */
+
+.summary-card-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-rows-wrapper {
+  flex-grow: 1; /* Allows this section to take up available space */
+}
+
+.review-btn {
+  width: 100%; /* Make the button take up the full width of the card */
+}
