@@ -74,6 +74,7 @@ const RestaurantAdminLayout = () => {
               <li className="ra-nav-item"><NavLink to="/restaurant-admin/dashboard" className="ra-nav-link" onClick={handleNavLinkClick}><i className="fas fa-tachometer-alt ra-nav-icon"></i> Dashboard</NavLink></li>
               <li className="ra-nav-item"><NavLink to="/restaurant-admin/menu" className="ra-nav-link" onClick={handleNavLinkClick}><i className="fas fa-book-open ra-nav-icon"></i> Menu</NavLink></li>
               <li className="ra-nav-item"><NavLink to="/restaurant-admin/orders" className="ra-nav-link" onClick={handleNavLinkClick}><i className="fas fa-concierge-bell ra-nav-icon"></i> Orders</NavLink></li>
+              <li className="ra-nav-item"><NavLink to="/restaurant-admin/reviews" className="ra-nav-link" onClick={handleNavLinkClick}><i className="fas fa-star-half-alt ra-nav-icon"></i> Reviews</NavLink></li>
             </ul>
           </nav>
         </aside>

@@ -25,19 +25,17 @@
 }
 
 /* --- Custom Stat Card --- */
+/* --- NEW Dark Themed Stat Card --- */
 .ra-stat-card {
-  background: #ffffff;
+  background-color: #1f2937; /* The same dark blue from your theme */
+  padding: 1.5rem;
   border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+  border: 1px solid #374151; /* A subtle border */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 200px;
-  text-align: center;
+  gap: 0.5rem;
+  color: #f3f4f6; /* Light text for the dark background */
 }
-
 .ra-stat-card .title {
   font-size: 1.1rem;
   font-weight: 500;
@@ -99,3 +97,46 @@
   animation: spin 1s linear infinite; margin: 0 auto;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- NEW: Styles for the Restaurant Admin Reviews Page --- */
+
+.ra-reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.ra-review-card {
+  background-color: #1f2937; /* Same as stat cards */
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #374151;
+}
+
+.ra-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #374151;
+  padding-bottom: 1rem;
+}
+
+.ra-review-author {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #f3f4f6;
+}
+
+.ra-review-comment {
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.ra-review-footer {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}

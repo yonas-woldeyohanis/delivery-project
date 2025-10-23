@@ -45,6 +45,7 @@ import ManageAgentsPage from './pages/superAdmin/ManageAgentsPage.jsx';
 import ViewAllOrdersPage from './pages/superAdmin/ViewAllOrdersPage.jsx';
 import AgentDashboardPage from './pages/agent/AgentDashboardPage.jsx';
 import MyDeliveriesPage from './pages/agent/MyDeliveriesPage.jsx';
+import RestaurantReviewsPage from './pages/restaurantAdmin/RestaurantReviewsPage'; 
 
 
 function App() {
@@ -144,6 +145,7 @@ function App() {
               <Route path="dashboard" element={<RestaurantDashboard />} />
               <Route path="menu" element={<RestaurantMenuPage />} />
               <Route path="orders" element={<RestaurantOrdersPage />} />
+               <Route path="reviews" element={<RestaurantReviewsPage />} />
             </Route>
           </Route>
           

@@ -103,40 +103,47 @@ const RestaurantOrdersPage = () => {
         <div className="ra-item-list">
           {orders.map((order) => (
             <div key={order._id} className="ra-order-card">
-              <div className="ra-item-cell">
-                <div className="label">Order ID</div>
-                <div className="value value-id">{order.displayId}</div>
-              </div>
-              <div className="ra-item-cell">
-                <div className="label">Customer</div>
-                <div className="value">{order.user ? order.user.name : 'N/A'}</div>
-              </div>
-              <div className="ra-item-cell full-width">
-                <div className="label">Items</div>
-                <ul className="items-list">
-                  {order.orderItems.map(item => <li key={item._id}>{item.name}</li>)}
-                </ul>
-              </div>
-              <div className="ra-item-cell">
-                <div className="label">Total</div>
-                <div className="value">Birr {order.totalPrice.toFixed(2)}</div>
-              </div>
-              <div className="ra-item-cell full-width">
-                <div className="label">Update Status</div>
-                <select
-                  className="status-select"
-                  value={order.status}
-                  onChange={(e) => handleStatusChange(order._id, e.target.value)}
-                >
-                  <option value="Pending">Pending</option>
-                  <option value="Preparing">Preparing</option>
-                  <option value="Ready for Pickup">Ready for Pickup</option>
-                  <option value="Out for Delivery" disabled>Out for Delivery</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Cancelled">Cancelled</option>
-                </select>
-              </div>
-            </div>
+  <div className="ra-item-cell">
+    <div className="label">Order ID</div>
+    <div className="value value-id">{order.displayId}</div>
+  </div>
+  <div className="ra-item-cell">
+    <div className="label">Customer</div>
+    <div className="value">{order.user ? order.user.name : 'N/A'}</div>
+  </div>
+
+  {/* --- NEW: Added the Order Time --- */}
+  <div className="ra-item-cell">
+    <div className="label">Time</div>
+    <div className="value">{new Date(order.createdAt).toLocaleTimeString()}</div>
+  </div>
+
+  <div className="ra-item-cell full-width">
+    <div className="label">Items</div>
+    <ul className="items-list">
+      {order.orderItems.map(item => <li key={item._id}>{item.name}</li>)}
+    </ul>
+  </div>
+  <div className="ra-item-cell">
+    <div className="label">Total</div>
+    <div className="value">Birr {order.totalPrice.toFixed(2)}</div>
+  </div>
+  <div className="ra-item-cell full-width">
+    <div className="label">Update Status</div>
+    <select
+      className="status-select"
+      value={order.status}
+      onChange={(e) => handleStatusChange(order._id, e.target.value)}
+    >
+      <option value="Pending">Pending</option>
+      <option value="Preparing">Preparing</option>
+      <option value="Ready for Pickup">Ready for Pickup</option>
+      <option value="Out for Delivery" disabled>Out for Delivery</option>
+      <option value="Completed">Completed</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
+  </div>
+</div>
           ))}
         </div>
       )}
